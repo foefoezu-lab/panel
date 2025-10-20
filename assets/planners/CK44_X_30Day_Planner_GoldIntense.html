@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CK44 Bangladesh – X (Twitter) 30-Day Organic Planner</title>
+<style>
+  :root{
+    --bg:#070c14; --card:#0b1321; --panel:#0e1a2e;
+    --text:#e8f1ff; --muted:#aac1d8; --blue:#1e90ff; --gold:#ffd700; --cyan:#8be0ff;
+    --border:#1a2a44; --success:#10b981;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+      radial-gradient(1200px 720px at 10% -10%, rgba(30,144,255,.16), transparent),
+      radial-gradient(1200px 720px at 100% 10%, rgba(255,215,0,.14), transparent),
+      linear-gradient(180deg,#07101e,#070c14 40%,#07101e);
+      color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  .container{max-width:1280px;margin:32px auto;padding:0 16px;display:grid;grid-template-columns:1.25fr .75fr;gap:16px}
+  @media (max-width:1060px){.container{grid-template-columns:1fr} .preview{order:-1}}
+  h1{margin:0 0 4px;font-size:clamp(22px,3.2vw,34px)}
+  .subtitle{color:var(--muted);margin:0 0 16px;font-size:14px}
+  .card{background:linear-gradient(180deg,rgba(11,19,33,.92),rgba(11,19,33,.94));
+        border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+  input[type="text"],input[type="url"],textarea{width:100%;padding:10px 12px;background:#0b172b;
+      color:var(--text);border:1px solid var(--border);border-radius:10px;outline:none}
+  textarea{min-height:100px;resize:vertical}
+  .btn{padding:10px 14px;border:1px solid var(--border);background:#0b172b;color:var(--text);border-radius:10px;cursor:pointer}
+  .btn:hover{border-color:#274264}
+  .btn-blue{background:linear-gradient(180deg,#0f2544,#0b172b);border-color:#274a7a;color:#bfe3ff}
+  .btn-gold{background:linear-gradient(180deg,#2a2214,#181104);border-color:#4a3914;color:#ffe39b}
+  .table-head{display:grid;grid-template-columns:64px 1.2fr 170px 1fr 120px;gap:12px;
+              padding:10px 16px;border:1px solid var(--border);border-radius:12px;background:#0b172b;color:#cfe0f7;font-size:13px}
+  details{border:1px solid var(--border);border-radius:14px;background:#0b172b;margin-top:10px}
+  summary{list-style:none;padding:14px 16px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.06);
+          display:grid;grid-template-columns:64px 1.2fr 170px 1fr 120px;gap:12px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  .kw{color:#8de3ff}
+  .status{display:flex;align-items:center;gap:8px}
+  .status input{width:18px;height:18px;cursor:pointer}
+  .muted{color:var(--muted)}
+  .done{color:var(--success);font-weight:600}
+  .section{padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px}
+  .panel h3{margin:0 0 8px;font-size:16px;color:#bfe3ff}
+  .row{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px}
+  .copy-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .search{flex:1;min-width:260px}
+  .foot{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;color:#c9def2;font-size:13px}
+  .hint{font-size:12px;color:#cde7ff}
+
+  /* Preview panel (tweet mock) */
+  .preview{position:sticky;top:16px;height:calc(100vh - 64px)}
+  .tweet{background:#0c1624;border:1px solid #1c2a44;border-radius:16px;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+  .tweet .hdr{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .avatar{width:42px;height:42px;border-radius:999px;background:linear-gradient(135deg,#1e90ff,#ffd700);box-shadow:0 0 18px rgba(30,144,255,.35)}
+  .name{font-weight:700} .user{color:#9fb4cc}
+  .tweet .body{white-space:pre-wrap;line-height:1.45;margin:8px 0}
+  .tweet .media{margin-top:8px;border-radius:12px;border:1px solid #20324f;min-height:160px;background:linear-gradient(180deg,rgba(30,144,255,.18),rgba(255,215,0,.12));display:flex;align-items:center;justify-content:center;color:#bfe3ff;padding:10px;text-align:center}
+  .tweet .meta{display:flex;gap:12px;margin-top:10px;color:#9fb4cc;font-size:12px}
+</style>
+
+<!-- CK44 Gold Inferno Intense — Soft Shine + CK44 Signature (non-destructive override) -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="ck44-gold-intense-override">
+  :root{
+    --bg:#0a0a0a; 
+    --panel:#14100a; 
+    --card:#14100a;
+    --border:#3b2a10;
+    --text:#fff9e8; 
+    --muted:#d8c78f;
+    --gold:#ffd700; 
+    --gold-2:#ffb700;
+    --accent:#d4af37;
+    --cyan:#8de3ff;
+    --success:#10b981;
+    --shadow: 0 12px 28px rgba(0,0,0,.55);
+  }
+  html,body{
+    background:
+      radial-gradient(1200px 720px at 12% -10%, rgba(212,175,55,.22), transparent),
+      radial-gradient(1200px 720px at 88% 8%, rgba(255,215,0,.18), transparent),
+      linear-gradient(180deg,#0a0a0a,#1b1304 40%,#0a0a0a) !important;
+    color: var(--text);
+    font-family: Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
+  }
+  h1,h2,h3,.badge-title,.btn-hero{
+    font-family: 'Orbitron', Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
+    letter-spacing: .4px;
+  }
+  .card, .panel, .tweet, .table-head, details, summary, textarea, input[type="text"], input[type="url"]{
+    background: rgba(20,16,10,.92) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: var(--shadow) !important;
+  }
+  .badge, .pill{
+    border: 1px solid #5a420f !important;
+    background: linear-gradient(180deg, #1d1608, #14100a) !important;
+    color: #ffe8a6 !important;
+  }
+  .btn, .btn-gold, .btn-blue{
+    border: 1px solid #5a420f !important;
+    background: linear-gradient(90deg, #604000, #ffcc33) !important;
+    color: #1a1204 !important;
+    font-weight: 700;
+    text-shadow: 0 1px 0 rgba(255,255,255,.15);
+    box-shadow: 0 8px 20px rgba(255,204,51,.18);
+    transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .btn:hover, .btn-gold:hover, .btn-blue:hover{
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(255,204,51,.25);
+  }
+  .btn:active{ transform: translateY(0); }
+  .subtitle, .muted, .hint{ color: var(--muted) !important; }
+  .kw{ color: var(--cyan) !important; }
+  .table-head{ color: #ffe8a6 !important; background: #171104 !important; }
+  summary{ background: #171104 !important; }
+  .foot{ color: #e8ddb6 !important; }
+  .panel h3, .tweet .name{ color:#ffe39b !important; }
+  .tweet .media{ 
+    background: linear-gradient(180deg, rgba(255,215,0,.16), rgba(212,175,55,.1)) !important;
+    color:#ffe39b !important;
+    border-color:#5a420f !important;
+  }
+  /* Soft Shine edges */
+  .card, .panel, .tweet{
+    position: relative;
+    overflow: hidden;
+  }
+  .card:before, .panel:before, .tweet:before{
+    content:"";
+    position:absolute; inset:-1px;
+    background: radial-gradient(400px 50px at 10% -10%, rgba(255,215,0,.22), transparent 60%),
+                radial-gradient(400px 50px at 90% -10%, rgba(212,175,55,.18), transparent 60%);
+    pointer-events:none;
+  }
+  /* Scrollbar gold */
+  *::-webkit-scrollbar{ width: 10px; height: 10px; }
+  *::-webkit-scrollbar-track{ background:#0f0f0f; }
+  *::-webkit-scrollbar-thumb{ background:#b8903c; border-radius:10px; border:2px solid #0f0f0f; }
+  *{ scrollbar-width: thin; scrollbar-color:#b8903c #0f0f0f; }
+  /* Inputs */
+  textarea, input[type="text"], input[type="url"]{
+    background:#100c06 !important; color:var(--text) !important; border-color:#3b2a10 !important;
+  }
+  textarea:focus, input[type="text"]:focus, input[type="url"]:focus{
+    outline: 2px solid rgba(255,215,0,.25);
+    box-shadow: 0 0 0 3px rgba(255,215,0,.15);
+  }
+  /* Badges for times */
+  .badge, .btn-blue{
+    color:#1a1204 !important;
+    background: linear-gradient(90deg,#ffe39b,#ffd24d) !important;
+    border-color:#7a5a14 !important;
+    box-shadow: 0 8px 16px rgba(255,215,0,.2) !important;
+  }
+  /* Keep checkboxes visible */
+  input[type="checkbox"]{ accent-color:#ffd24d; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div>
+    <div class="card">
+      <h1>CK44 – X (Twitter) 30-Day Organic Planner</h1>
+      <p class="subtitle">Blue–Gold aesthetic • 3 posts/day • Medium-style captions • Hashtags • AI prompts • Search • Tweet Preview • Export CSV</p>
+
+      <div class="toolbar">
+        <input id="search" class="search" type="text" placeholder="Cari tema / keyword…"/>
+        <button class="btn" onclick="toggleAll(true)">Centang semua</button>
+        <button class="btn" onclick="toggleAll(false)">Kosongkan centang</button>
+        <button class="btn btn-gold" onclick="exportCSV()">Export CSV</button>
+      </div>
+
+      <div class="table-head">
+        <div>Day</div><div>Judul / Tema</div><div>Slot Waktu</div><div>Keywords</div><div>Status</div>
+      </div>
+
+      <div id="root"></div>
+
+      <div class="foot">
+        <span>Jadwal ideal: <span class="btn-blue" style="padding:4px 10px;border-radius:999px">10:00</span> · <span class="btn-blue" style="padding:4px 10px;border-radius:999px">17:00</span> · <span class="btn-blue" style="padding:4px 10px;border-radius:999px">21:00</span> (GMT+6)</span>
+        <span class="hint">Gunakan 3–5 hashtag saja per post untuk tampilan organik.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview">
+    <div class="card tweet">
+      <div class="hdr"><div class="avatar"></div><div><div class="name">CK44 Bangladesh</div><div class="user">@ck44_official</div></div></div>
+      <div id="previewBody" class="body">Select a post to preview here…</div>
+      <div id="previewMedia" class="media">Media Preview (AI Image / Minimal Card)</div>
+      <div class="meta"><div>❤ 1.2K</div><div>🔁 210</div><div>👁 45K</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Base content ideas (30 themes)
+const themes = [
+  "Luck is timing", "Chase mastery", "Lucky Neko feature", "Your luckiest moment", "PG Soft storytelling",
+  "CK44 experience", "Never stop believing", "Fortune Tiger roar", "Rise energy", "Weekend chill",
+  "JILI adrenaline", "Fun vs Fate", "Golden Empire feeling", "Small wins matter", "Balanced lifestyle",
+  "Built step by step", "Unexpected big wins", "CK44 code", "Prep meets chance", "Every player has a story",
+  "Rhythm not risk", "Now it’s your turn", "Fortune spins", "Tag your lucky friend", "Your vibe your tribe",
+  "From 1 spin to 1M", "PG Soft mood?", "Memories stay", "Daily thrill", "Gratitude end"
+];
+
+// Games to rotate for 17:00 post
+const games = [
+  ["PG Soft","Lucky Neko"], ["PG Soft","Fortune Tiger"], ["PG Soft","Mahjong Ways 2"], ["PG Soft","Fortune Ox"], ["PG Soft","Ways of the Qilin"],
+  ["PG Soft","Treasures of Aztec"], ["PG Soft","Dragon Tiger Luck"], ["PG Soft","Wild Bandito"], ["PG Soft","Dreams of Macau"], ["PG Soft","Candy Burst"],
+  ["PG Soft","Reel Love"], ["PG Soft","Ganesha Fortune"], ["PG Soft","Symbols of Egypt"], ["PG Soft","Vampire's Charm"], ["PG Soft","Phoenix Rises"],
+  ["JILI","Super Ace"], ["JILI","Boxing King"], ["JILI","Crazy Seven"], ["JILI","Roma X"], ["JILI","Golden Empire"],
+  ["JILI","Money Coming"], ["JILI","Fortune Gems"], ["JILI","Pharaoh's Treasure"], ["JILI","Bao Boon Chin"], ["JILI","Mega Ace"],
+  ["JILI","Phantom Thief"], ["JILI","Win Drop"], ["JILI","Charge Buffalo"], ["JILI","Jungle King"], ["JILI","Shanghai Beauty"]
+];
+
+function morningText(day){
+  const lines = [
+    "Luck is timing. CK44 is the moment. 🎰",
+    "Some chase money. Others chase mastery. 💫",
+    "Never stop spinning. Never stop believing. 🔁",
+    "Success is built one spin at a time.",
+    "There’s no such thing as luck — just preparation meeting chance.",
+    "Morning coffee ☕, evening spins 🎰 — balance achieved.",
+    "Your daily dose of thrill — CK44 style. ⚡",
+  ];
+  const l = lines[(day-1)%lines.length];
+  return `${l}\n#CK44 #Bangladesh #PlaySmart`;
+}
+
+function afternoonText(day){
+  const [brand, game] = games[(day-1)%games.length];
+  const map = {
+    "PG Soft": `Feature: ${game} by PG Soft — story-first, visually rich, and thrilling every spin.`,
+    "JILI": `Highlight: ${game} by JILI — energetic, bold, and packed with adrenaline.`
+  };
+  return `${map[brand]}\n#CK44 #${brand.replace(' ','')} #${game.replace(/\\s+/g,'')} #Bangladesh`;
+}
+
+function nightText(day){
+  const lines = [
+    "Your luckiest moment? Drop your story 👇",
+    "Tag your lucky friend who needs to try CK44!",
+    "Big wins fade. Memories stay. Make yours today.",
+    "Play smart, win smooth. That’s the CK44 code. 💎",
+    "Some call it risk. We call it rhythm. 🎶",
+    "We end this month not with luck, but with gratitude. 💛",
+  ];
+  const l = lines[(day-1)%lines.length];
+  return `${l}\n#CK44 #Bangladesh #Community`;
+}
+
+function aiPrompt(theme){
+  return `Create a clean X card in blue–gold CK44 style with minimal text '${theme}', subtle glow, CK44 logo corner, elegant composition.`;
+}
+
+const root = document.getElementById('root');
+
+function render(){
+  root.innerHTML = '';
+  for(let i=1;i<=30;i++){
+    const theme = themes[i-1] || `CK44 Day ${i}`;
+    const details = document.createElement('details');
+    const keywords = `CK44, Bangladesh, X Twitter, Organic, ${theme}`;
+    details.innerHTML = `
+      <summary>
+        <div><span class="btn-blue" style="padding:4px 10px;border-radius:999px">Day ${i}</span></div>
+        <div><strong>${theme}</strong></div>
+        <div>10:00 • 17:00 • 21:00</div>
+        <div class="kw">${keywords}</div>
+        <div class="status"><input type="checkbox"/><span class="muted">Belum diposting</span></div>
+      </summary>
+
+      <div class="section">
+        <div class="panel">
+          <h3>🌞 Morning (10:00)</h3>
+          <div class="row">
+            <div>
+              <label class="muted">Tweet Text</label>
+              <textarea id="m-${i}">${morningText(i)}</textarea>
+              <div class="copy-row">
+                <button class="btn" onclick="copy('#m-${i}')">Copy Morning</button>
+                <button class="btn" onclick="preview('Morning', ${i})">Preview</button>
+              </div>
+            </div>
+            <div>
+              <label class="muted">AI Image Prompt</label>
+              <textarea id="mp-${i}">${aiPrompt('Morning Energy')}</textarea>
+              <div class="copy-row"><button class="btn" onclick="copy('#mp-${i}')">Copy Prompt</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>🎯 Afternoon (17:00)</h3>
+          <div class="row">
+            <div>
+              <label class="muted">Tweet Text</label>
+              <textarea id="a-${i}">${afternoonText(i)}</textarea>
+              <div class="copy-row">
+                <button class="btn" onclick="copy('#a-${i}')">Copy Afternoon</button>
+                <button class="btn" onclick="preview('Afternoon', ${i})">Preview</button>
+              </div>
+            </div>
+            <div>
+              <label class="muted">AI Image Prompt</label>
+              <textarea id="ap-${i}">${aiPrompt('Game Highlight')}</textarea>
+              <div class="copy-row"><button class="btn" onclick="copy('#ap-${i}')">Copy Prompt</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>🌙 Night (21:00)</h3>
+          <div class="row">
+            <div>
+              <label class="muted">Tweet Text</label>
+              <textarea id="n-${i}">${nightText(i)}</textarea>
+              <div class="copy-row">
+                <button class="btn" onclick="copy('#n-${i}')">Copy Night</button>
+                <button class="btn" onclick="preview('Night', ${i})">Preview</button>
+              </div>
+            </div>
+            <div>
+              <label class="muted">AI Image Prompt</label>
+              <textarea id="np-${i}">${aiPrompt('Community & Gratitude')}</textarea>
+              <div class="copy-row"><button class="btn" onclick="copy('#np-${i}')">Copy Prompt</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    root.appendChild(details);
+  }
+}
+render();
+
+// Search filter
+document.getElementById('search').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase();
+  [...root.children].forEach(item => {
+    item.style.display = item.innerText.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+
+// Copy helper
+function copy(sel){
+  const el = document.querySelector(sel);
+  el.select(); el.setSelectionRange(0, 99999);
+  document.execCommand('copy');
+  el.style.outline='2px solid var(--cyan)';
+  setTimeout(()=>{el.style.outline='none'},600);
+}
+
+// Toggle all checkboxes
+function toggleAll(v){
+  document.querySelectorAll('.status input[type="checkbox"]').forEach(cb => {
+    cb.checked = v;
+    const label = cb.nextElementSibling;
+    label.textContent = v ? 'Sudah diposting' : 'Belum diposting';
+    label.className = v ? 'done' : 'muted';
+  });
+}
+
+// Per-item status
+document.addEventListener('change',(e)=>{
+  if(e.target.matches('.status input[type="checkbox"]')){
+    const label = e.target.nextElementSibling;
+    label.textContent = e.target.checked ? 'Sudah diposting' : 'Belum diposting';
+    label.className = e.target.checked ? 'done' : 'muted';
+  }
+});
+
+// Preview logic
+function preview(slot, day){
+  const body = document.getElementById('previewBody');
+  const media = document.getElementById('previewMedia');
+  const get = (id)=>document.getElementById(id).value.trim();
+
+  const txt = slot==='Morning' ? get(`m-${day}`) : (slot==='Afternoon' ? get(`a-${day}`) : get(`n-${day}`));
+  const prm = slot==='Morning' ? get(`mp-${day}`) : (slot==='Afternoon' ? get(`ap-${day}`) : get(`np-${day}`));
+
+  body.textContent = txt;
+  media.textContent = prm.length>0 ? "AI Visual: " + prm.slice(0,200) + (prm.length>200 ? "…" : "") : "Media Preview (AI Image / Minimal Card)";
+}
+
+// Export CSV
+function exportCSV(){
+  const headers = ['Day','Slot','Tweet','AIPrompt','Status'];
+  const rows = [headers];
+  [...root.children].forEach((det,i)=>{
+    const idx = i+1;
+    const slots = [['Morning',`m-${idx}`,`mp-${idx}`],['Afternoon',`a-${idx}`,`ap-${idx}`],['Night',`n-${idx}`,`np-${idx}`]];
+    slots.forEach(s=>{
+      const [slot, tid, pid] = s;
+      const txt = document.getElementById(tid).value.replace(/\n/g,' ').trim();
+      const prm = document.getElementById(pid).value.replace(/\n/g,' ').trim();
+      const status = det.querySelector('.status input').checked ? 'Posted' : 'Not Posted';
+      rows.push([idx,slot,txt,prm,status].map(v=>`"${String(v).replace(/"/g,'""')}"`).join(','));
+    });
+  });
+  const csv = rows.join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download='CK44_X_30Day.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>

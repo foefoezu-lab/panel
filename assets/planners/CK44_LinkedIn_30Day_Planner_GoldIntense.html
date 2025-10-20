@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CK44 – LinkedIn 30-Day Planner</title>
+<style>
+:root{--bg:#080f1c;--panel:#0e1a2e;--text:#eaf2ff;--muted:#a9bfd8;--gold:#1e90ff;--border:#1a2a44;--cyan:#8be0ff}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#07101e,#081224 40%,#07101e);color:var(--text);
+font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+.container{max-width:1200px;margin:24px auto;padding:0 16px}
+h1{margin:6px 0 8px} .subtitle{color:var(--muted)}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;margin-top:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px} textarea{width:100%;min-height:100px;background:#0b172b;color:var(--text);
+border:1px solid var(--border);border-radius:10px;padding:10px} .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#0b172b;color:var(--text);cursor:pointer}
+.copy{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap} .status{display:flex;align-items:center;gap:10px;margin-left:auto}
+.day{display:flex;align-items:center;gap:10px;justify-content:space-between;background:#0b172b;border:1px solid var(--border);border-radius:10px;padding:10px;margin-top:10px}
+.badge{border:1px solid var(--border);padding:4px 10px;border-radius:999px;background:#0b172b;color:var(--cyan)}
+</style>
+<!-- CK44 Gold Inferno Intense — Soft Shine + CK44 Signature (non-destructive override) -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="ck44-gold-intense-override">
+  :root{
+    --bg:#0a0a0a; 
+    --panel:#14100a; 
+    --card:#14100a;
+    --border:#3b2a10;
+    --text:#fff9e8; 
+    --muted:#d8c78f;
+    --gold:#ffd700; 
+    --gold-2:#ffb700;
+    --accent:#d4af37;
+    --cyan:#8de3ff;
+    --success:#10b981;
+    --shadow: 0 12px 28px rgba(0,0,0,.55);
+  }
+  html,body{
+    background:
+      radial-gradient(1200px 720px at 12% -10%, rgba(212,175,55,.22), transparent),
+      radial-gradient(1200px 720px at 88% 8%, rgba(255,215,0,.18), transparent),
+      linear-gradient(180deg,#0a0a0a,#1b1304 40%,#0a0a0a) !important;
+    color: var(--text);
+    font-family: Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
+  }
+  h1,h2,h3,.badge-title,.btn-hero{
+    font-family: 'Orbitron', Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial !important;
+    letter-spacing: .4px;
+  }
+  .card, .panel, .tweet, .table-head, details, summary, textarea, input[type="text"], input[type="url"]{
+    background: rgba(20,16,10,.92) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: var(--shadow) !important;
+  }
+  .badge, .pill{
+    border: 1px solid #5a420f !important;
+    background: linear-gradient(180deg, #1d1608, #14100a) !important;
+    color: #ffe8a6 !important;
+  }
+  .btn, .btn-gold, .btn-blue{
+    border: 1px solid #5a420f !important;
+    background: linear-gradient(90deg, #604000, #ffcc33) !important;
+    color: #1a1204 !important;
+    font-weight: 700;
+    text-shadow: 0 1px 0 rgba(255,255,255,.15);
+    box-shadow: 0 8px 20px rgba(255,204,51,.18);
+    transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .btn:hover, .btn-gold:hover, .btn-blue:hover{
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(255,204,51,.25);
+  }
+  .btn:active{ transform: translateY(0); }
+  .subtitle, .muted, .hint{ color: var(--muted) !important; }
+  .kw{ color: var(--cyan) !important; }
+  .table-head{ color: #ffe8a6 !important; background: #171104 !important; }
+  summary{ background: #171104 !important; }
+  .foot{ color: #e8ddb6 !important; }
+  .panel h3, .tweet .name{ color:#ffe39b !important; }
+  .tweet .media{ 
+    background: linear-gradient(180deg, rgba(255,215,0,.16), rgba(212,175,55,.1)) !important;
+    color:#ffe39b !important;
+    border-color:#5a420f !important;
+  }
+  /* Soft Shine edges */
+  .card, .panel, .tweet{
+    position: relative;
+    overflow: hidden;
+  }
+  .card:before, .panel:before, .tweet:before{
+    content:"";
+    position:absolute; inset:-1px;
+    background: radial-gradient(400px 50px at 10% -10%, rgba(255,215,0,.22), transparent 60%),
+                radial-gradient(400px 50px at 90% -10%, rgba(212,175,55,.18), transparent 60%);
+    pointer-events:none;
+  }
+  /* Scrollbar gold */
+  *::-webkit-scrollbar{ width: 10px; height: 10px; }
+  *::-webkit-scrollbar-track{ background:#0f0f0f; }
+  *::-webkit-scrollbar-thumb{ background:#b8903c; border-radius:10px; border:2px solid #0f0f0f; }
+  *{ scrollbar-width: thin; scrollbar-color:#b8903c #0f0f0f; }
+  /* Inputs */
+  textarea, input[type="text"], input[type="url"]{
+    background:#100c06 !important; color:var(--text) !important; border-color:#3b2a10 !important;
+  }
+  textarea:focus, input[type="text"]:focus, input[type="url"]:focus{
+    outline: 2px solid rgba(255,215,0,.25);
+    box-shadow: 0 0 0 3px rgba(255,215,0,.15);
+  }
+  /* Badges for times */
+  .badge, .btn-blue{
+    color:#1a1204 !important;
+    background: linear-gradient(90deg,#ffe39b,#ffd24d) !important;
+    border-color:#7a5a14 !important;
+    box-shadow: 0 8px 16px rgba(255,215,0,.2) !important;
+  }
+  /* Keep checkboxes visible */
+  input[type="checkbox"]{ accent-color:#ffd24d; }
+</style>
+</head><body>
+<div class="container">
+  <h1>CK44 – LinkedIn 30-Day Planner</h1>
+  <p class="subtitle">Blue–Gold CK44 aesthetic • Offline • Copy-ready • Export CSV (via browser)</p>
+  <div id="root"></div>
+</div>
+<script>
+function postTemplate(day, slot, defaultText){
+  return `
+  <div class="panel">
+    <div class="day"><span class="badge">Day ${day} — ${slot}</span><label class="status"><input type="checkbox"> posted</label></div>
+    <div class="grid">
+      <div>
+        <label>Text</label>
+        <textarea id="t-${day}-${slot}">${defaultText}</textarea>
+        <div class="copy"><button class="btn" onclick="copy('#t-${day}-${slot}')">Copy Text</button></div>
+      </div>
+      <div>
+        <label>AI Image Prompt</label>
+        <textarea id="p-${day}-${slot}">Create LinkedIn visual card in CK44 blue–gold style with subtle glow, minimal layout, and topic '{slot}' for day {day}.</textarea>
+        <div class="copy"><button class="btn" onclick="copy('#p-${day}-${slot}')">Copy Prompt</button></div>
+      </div>
+    </div>
+  </div>`;
+}
+const root = document.getElementById('root');
+let html = "";
+for(let d=1; d<=30; d++){ 
+  html += postTemplate(d, 'Morning', 'LinkedIn • Morning insight about CK44, fun, positive vibe.');
+  html += postTemplate(d, 'Afternoon', 'LinkedIn • Game highlight PG Soft/JILI with soft CTA.');
+  html += postTemplate(d, 'Night', 'LinkedIn • Community/engagement question or reflection.');
+}
+root.innerHTML = html;
+
+function copy(sel){
+  const el = document.querySelector(sel);
+  el.select(); el.setSelectionRange(0, 99999); document.execCommand('copy');
+  el.style.outline='2px solid var(--cyan)'; setTimeout(()=>el.style.outline='none',600);
+}
+</script>
+</body></html>
