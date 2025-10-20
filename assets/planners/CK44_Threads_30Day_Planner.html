@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CK44 – Threads 30-Day Planner</title>
+<style>
+:root{--bg:#080f1c;--panel:#0e1a2e;--text:#eaf2ff;--muted:#a9bfd8;--gold:#ffd700;--border:#1a2a44;--cyan:#8be0ff}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#07101e,#081224 40%,#07101e);color:var(--text);
+font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+.container{max-width:1200px;margin:24px auto;padding:0 16px}
+h1{margin:6px 0 8px} .subtitle{color:var(--muted)}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;margin-top:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px} textarea{width:100%;min-height:100px;background:#0b172b;color:var(--text);
+border:1px solid var(--border);border-radius:10px;padding:10px} .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#0b172b;color:var(--text);cursor:pointer}
+.copy{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap} .status{display:flex;align-items:center;gap:10px;margin-left:auto}
+.day{display:flex;align-items:center;gap:10px;justify-content:space-between;background:#0b172b;border:1px solid var(--border);border-radius:10px;padding:10px;margin-top:10px}
+.badge{border:1px solid var(--border);padding:4px 10px;border-radius:999px;background:#0b172b;color:var(--cyan)}
+</style></head><body>
+<div class="container">
+  <h1>CK44 – Threads 30-Day Planner</h1>
+  <p class="subtitle">Blue–Gold CK44 aesthetic • Offline • Copy-ready • Export CSV (via browser)</p>
+  <div id="root"></div>
+</div>
+<script>
+function postTemplate(day, slot, defaultText){
+  return `
+  <div class="panel">
+    <div class="day"><span class="badge">Day ${day} — ${slot}</span><label class="status"><input type="checkbox"> posted</label></div>
+    <div class="grid">
+      <div>
+        <label>Text</label>
+        <textarea id="t-${day}-${slot}">${defaultText}</textarea>
+        <div class="copy"><button class="btn" onclick="copy('#t-${day}-${slot}')">Copy Text</button></div>
+      </div>
+      <div>
+        <label>AI Image Prompt</label>
+        <textarea id="p-${day}-${slot}">Create Threads visual card in CK44 blue–gold style with subtle glow, minimal layout, and topic '{slot}' for day {day}.</textarea>
+        <div class="copy"><button class="btn" onclick="copy('#p-${day}-${slot}')">Copy Prompt</button></div>
+      </div>
+    </div>
+  </div>`;
+}
+const root = document.getElementById('root');
+let html = "";
+for(let d=1; d<=30; d++){ 
+  html += postTemplate(d, 'Morning', 'Threads • Morning insight about CK44, fun, positive vibe.');
+  html += postTemplate(d, 'Afternoon', 'Threads • Game highlight PG Soft/JILI with soft CTA.');
+  html += postTemplate(d, 'Night', 'Threads • Community/engagement question or reflection.');
+}
+root.innerHTML = html;
+
+function copy(sel){
+  const el = document.querySelector(sel);
+  el.select(); el.setSelectionRange(0, 99999); document.execCommand('copy');
+  el.style.outline='2px solid var(--cyan)'; setTimeout(()=>el.style.outline='none',600);
+}
+</script>
+</body></html>
