@@ -1,0 +1,272 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CK44 – Universal 30‑Day Planner (All Platforms)</title>
+<style>
+:root{
+  --bg1:#071124; --bg2:#0a1630; --bg3:#130e24;
+  --text:#eaf2ff; --muted:#a9bfd8; --gold:#ffd700; --blue:#1e90ff; --purple:#7c3aed; --cyan:#7dd3fc; --green:#10b981;
+  --card:#0c1428; --panel:#0d1b33; --border:#1a2a44;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial;
+background:
+  radial-gradient(1200px 700px at 20% -10%, rgba(30,144,255,.18), transparent),
+  radial-gradient(1200px 700px at 90% 0%, rgba(255,215,0,.16), transparent),
+  linear-gradient(135deg,var(--bg1),var(--bg2) 50%,var(--bg3));}
+.header{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border);
+background:linear-gradient(180deg,rgba(12,20,40,.65),rgba(10,18,36,.75));backdrop-filter:blur(6px);position:sticky;top:0;z-index:10}
+.title{display:flex;gap:10px;align-items:center}
+.title h1{margin:0;font-size:clamp(18px,3.2vw,26px);background:linear-gradient(90deg,#ffe89a,#ffd700,#9dd5ff,#c6a8ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.title .sub{font-size:12px;color:var(--muted)}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0b172b;color:var(--text);cursor:pointer}
+.btn:hover{border-color:#2a4670}
+.container{max-width:1280px;margin:18px auto;padding:0 16px}
+.card{background:linear-gradient(180deg,rgba(12,27,51,.9),rgba(12,27,51,.94));border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.45);padding:16px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+input[type="text"],input[type="time"],textarea,select{width:100%;padding:10px 12px;background:#0b172b;color:var(--text);border:1px solid var(--border);border-radius:10px;outline:none}
+textarea{min-height:96px;resize:vertical}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#0b172b;color:#dff1ff;font-size:12px}
+.grid-head{display:grid;grid-template-columns:64px 1.1fr 1fr 1fr 120px;gap:12px;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:#0b172b;color:#cfe0f7;font-size:13px}
+.details{border:1px solid var(--border);border-radius:14px;background:#0b172b;margin-top:10px}
+summary{list-style:none;padding:12px 14px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.06);
+display:grid;grid-template-columns:64px 1.1fr 1fr 1fr 120px;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+.kw{color:var(--cyan)} .status{display:flex;align-items:center;gap:8px} .status input{width:18px;height:18px;cursor:pointer}
+.section{padding:12px 14px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px}
+.panel h3{margin:0 0 8px;font-size:15px;color:#cfe7ff}
+.row{display:grid;grid-template-columns: .9fr 1.1fr; gap:12px}
+.copy{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.foot{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;color:#c9def2;font-size:13px}
+h4{margin:0 0 6px;font-size:13px;color:#cfe7ff}
+.grid-times{display:flex;gap:8px;flex-wrap:wrap}
+.time{padding:4px 8px;border-radius:999px;border:1px solid #1c2e4a;background:#0e1a2e;color:#dff1ff;font-size:12px}
+.platforms{display:flex;gap:8px;flex-wrap:wrap}
+.tag{padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:#0b172b;color:#dfeaff}
+@media (max-width:980px){
+  .grid-head, summary{grid-template-columns:64px 1fr 1fr}
+  summary .kw, .grid-head div:nth-child(4){display:none}
+  summary .status, .grid-head div:nth-child(5){display:none}
+  .section{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+}
+footer{margin:22px 0 28px;text-align:center;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="title">
+    <img src="" alt="" style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--blue));box-shadow:0 0 24px rgba(255,215,0,.35)"/>
+    <div>
+      <h1>CK44 – Universal 30‑Day Planner</h1>
+      <div class="sub">One template for all platforms • Keywords • Best‑time per platform • AI Prompts • Hashtags • CTA • Export CSV</div>
+    </div>
+  </div>
+  <div class="controls">
+    <input id="q" type="text" placeholder="Search topic / keyword…"/>
+    <button class="btn" onclick="toggleAll(true)">Check all</button>
+    <button class="btn" onclick="toggleAll(false)">Uncheck all</button>
+    <button class="btn" onclick="exportCSV()">Export CSV</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="grid-head">
+      <div>Day</div><div>Focus Topic / Title</div><div>Keywords</div><div>Posting Time</div><div>Status</div>
+    </div>
+    <div id="root"></div>
+    <div class="foot">
+      <span>Default best‑time: <span class="badge">YouTube 18:00</span> <span class="badge">Instagram 12:00 / 17:00 / 19:30</span> <span class="badge">TikTok 11:30 / 19:00 / 21:30</span> <span class="badge">Medium/X/LinkedIn 10:00 & 20:00</span> (GMT+6)</span>
+      <span class="badge">Tip:</span> gunakan 3–5 hashtag inti + 2–3 hashtag trending agar tetap organik.
+    </div>
+  </div>
+</div>
+
+<footer>© 2025 Taka Alliance | CK44 Bangladesh — The Best Platform</footer>
+
+<script>
+// ===== Configs =====
+const BEST_TIMES = {
+  youtube: ["18:00","21:00"],
+  instagram: ["12:00","17:00","19:30"],
+  tiktok: ["11:30","19:00","21:30"],
+  medium: ["10:00","20:00"],
+  twitter: ["10:00","17:00","21:00"],
+  linkedin: ["10:00","20:00"],
+  threads: ["12:00","19:00"],
+  reddit: ["10:00","20:30"]
+};
+
+const DEFAULT_TOPICS = [
+  "CK44 Bangladesh – Where Entertainment Meets Opportunity",
+  "PG Soft – Lucky Neko • Why players love it",
+  "JILI – Super Ace • Energy highlight",
+  "PG Soft – Fortune Tiger • Quick guide",
+  "JILI – Boxing King • KO reel",
+  "PG Soft – Mahjong Ways 2 • Tips",
+  "JILI – Golden Empire • Feature focus",
+  "PG Soft – Treasures of Aztec • Trailer",
+  "JILI – Money Coming • Promo",
+  "PG Soft – Dragon Tiger Luck • Aesthetic",
+  "JILI – Fortune Gems • Neon showcase",
+  "PG Soft – Wild Bandito • Music & mood",
+  "JILI – Pharaoh's Treasure • Short trailer",
+  "PG Soft – Dreams of Macau • Lux vibe",
+  "JILI – Bao Boon Chin • Tutorial",
+  "PG Soft – Candy Burst • Fun & bright",
+  "JILI – Mega Ace • Quick promo",
+  "PG Soft – Reel Love • Visual storytelling",
+  "JILI – Phantom Thief • Cinematic",
+  "PG Soft – Ganesha Fortune • Focus",
+  "JILI – Win Drop • Feature",
+  "PG Soft – Symbols of Egypt • Short",
+  "JILI – Charge Buffalo • Montage",
+  "PG Soft – Vampire's Charm • Mood",
+  "JILI – Jungle King • Highlight",
+  "PG Soft – Phoenix Rises • Trailer",
+  "JILI – Shanghai Beauty • Showcase",
+  "CK44 VIP System • How it works",
+  "Daily Bonus • How to claim fast",
+  "Community Stories • Your luckiest moment"
+];
+
+function defaultKeywords(topic){
+  const base = ["CK44 Bangladesh","PG Soft","JILI","bonus","VIP","Bangladesh","gaming"];
+  return [topic.split("•")[0].trim(), ...base].join(", ");
+}
+
+function defaultHashtags(topic){
+  const tags = ["#CK44","#Bangladesh","#GamingLife","#PGSoft","#JILI","#Bonus","#Slots","#PlaySmart"];
+  return tags.join(" ");
+}
+
+function promptUniversal(topic){
+  return `Design a CK44 gold–blue–purple visual for: “${topic}”. Clean composition, subtle glow, elegant typography. Add CK44 logo, minimal callout “Play Now on CK44 Bangladesh”. 4K export.`;
+}
+
+function ctaIdeas(){
+  return ["Join Now","Play to Earn","Claim Your Bonus","Spin Today","Try Your Luck"][Math.floor(Math.random()*5)];
+}
+
+// ===== Render =====
+const root = document.getElementById('root');
+function render(){
+  root.innerHTML = "";
+  for(let d=1; d<=30; d++){
+    const topic = DEFAULT_TOPICS[(d-1)%DEFAULT_TOPICS.length];
+    const kw = defaultKeywords(topic);
+    const details = document.createElement('details');
+    details.className = "details";
+    const id = `d${d}`;
+    details.innerHTML = `
+      <summary>
+        <div><span class="badge">Day ${d}</span></div>
+        <div><strong>${topic}</strong></div>
+        <div class="kw">${kw}</div>
+        <div>
+          <div class="grid-times">
+            <span class="time">YT ${BEST_TIMES.youtube.join("/")}</span>
+            <span class="time">IG ${BEST_TIMES.instagram.join("/")}</span>
+            <span class="time">TT ${BEST_TIMES.tiktok.join("/")}</span>
+          </div>
+        </div>
+        <div class="status"><input type="checkbox" id="${id}-chk"/> <span class="muted">pending</span></div>
+      </summary>
+
+      <div class="section">
+        <div class="panel">
+          <h3>📝 Post Text</h3>
+          <div class="row">
+            <div><label>Topic / Title</label><input id="${id}-title" type="text" value="${topic}"/></div>
+            <div><label>Keywords</label><input id="${id}-kw" type="text" value="${kw}"/></div>
+          </div>
+          <div class="row">
+            <div><label>Hashtags</label><input id="${id}-tags" type="text" value="${defaultHashtags(topic)}"/></div>
+            <div><label>CTA</label><input id="${id}-cta" type="text" value="${ctaIdeas()}"/></div>
+          </div>
+          <div><label>Caption / Post</label><textarea id="${id}-text">Today’s highlight: ${topic}
+Play smart, win smooth — CK44 Bangladesh.</textarea></div>
+          <div class="copy">
+            <button class="btn" onclick="copy('#${id}-text')">Copy Text</button>
+            <button class="btn" onclick="copy('#${id}-tags')">Copy Hashtags</button>
+            <button class="btn" onclick="copy('#${id}-kw')">Copy Keywords</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>🎨 AI Image Prompt</h3>
+          <div class="row">
+            <div>
+              <label>Universal Prompt</label>
+              <textarea id="${id}-prompt">${promptUniversal(topic)}</textarea>
+              <div class="copy"><button class="btn" onclick="copy('#${id}-prompt')">Copy Prompt</button></div>
+            </div>
+            <div>
+              <h4>Best Time by Platform (edit if needed)</h4>
+              <div class="platforms">
+                <span class="tag">YouTube</span><input type="time" id="${id}-yt1" value="${BEST_TIMES.youtube[0]}"/> <input type="time" id="${id}-yt2" value="${BEST_TIMES.youtube[1]}"/>
+                <span class="tag">Instagram</span><input type="time" id="${id}-ig1" value="${BEST_TIMES.instagram[0]}"/> <input type="time" id="${id}-ig2" value="${BEST_TIMES.instagram[1]}"/> <input type="time" id="${id}-ig3" value="${BEST_TIMES.instagram[2]}"/>
+                <span class="tag">TikTok</span><input type="time" id="${id}-tt1" value="${BEST_TIMES.tiktok[0]}"/> <input type="time" id="${id}-tt2" value="${BEST_TIMES.tiktok[1]}"/> <input type="time" id="${id}-tt3" value="${BEST_TIMES.tiktok[2]}"/>
+                <span class="tag">Medium</span><input type="time" id="${id}-md1" value="${BEST_TIMES.medium[0]}"/> <input type="time" id="${id}-md2" value="${BEST_TIMES.medium[1]}"/>
+                <span class="tag">X</span><input type="time" id="${id}-tw1" value="${BEST_TIMES.twitter[0]}"/> <input type="time" id="${id}-tw2" value="${BEST_TIMES.twitter[1]}"/> <input type="time" id="${id}-tw3" value="${BEST_TIMES.twitter[2]}"/>
+                <span class="tag">LinkedIn</span><input type="time" id="${id}-li1" value="${BEST_TIMES.linkedin[0]}"/> <input type="time" id="${id}-li2" value="${BEST_TIMES.linkedin[1]}"/>
+                <span class="tag">Threads</span><input type="time" id="${id}-th1" value="${BEST_TIMES.threads[0]}"/> <input type="time" id="${id}-th2" value="${BEST_TIMES.threads[1]}"/>
+                <span class="tag">Reddit</span><input type="time" id="${id}-rd1" value="${BEST_TIMES.reddit[0]}"/> <input type="time" id="${id}-rd2" value="${BEST_TIMES.reddit[1]}"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    root.appendChild(details);
+  }
+}
+render();
+
+// Search filter
+const q = document.getElementById('q');
+q.addEventListener('input', ()=>{
+  const term = q.value.toLowerCase();
+  document.querySelectorAll('.details').forEach(d=>{
+    const txt = d.querySelector('summary').innerText.toLowerCase();
+    d.style.display = txt.includes(term) ? '' : 'none';
+  });
+});
+
+// Helpers
+function toggleAll(val){
+  document.querySelectorAll('.status input[type="checkbox"]').forEach(ch=>{ch.checked = val; ch.parentElement.nextElementSibling && (ch.parentElement.nextElementSibling.textContent = val?'done':'pending');});
+}
+
+function exportCSV(){
+  const rows = [["Day","Title","Keywords","Hashtags","CTA","Text"]];
+  for(let d=1; d<=30; d++){
+    const id = `d${d}`;
+    const title = val(`${id}-title`);
+    const kw = val(`${id}-kw`);
+    const tags = val(`${id}-tags`);
+    const cta = val(`${id}-cta`);
+    const text = val(`${id}-text`).replace(/\n/g,'\\n');
+    rows.push([d, title, kw, tags, cta, text]);
+  }
+  const csv = rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n");
+  download("CK44_Universal_30Day_Planner.csv", csv);
+}
+
+function val(id){return document.getElementById(id).value || ""}
+function download(name, data){
+  const blob = new Blob([data], {{type:"text/csv"}});
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), {{href:url, download:name}});
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+
+function copy(sel){
+  const el = document.querySelector(sel); el.select(); el.setSelectionRange(0,99999); document.execCommand('copy');
+  el.style.outline='2px solid var(--cyan)'; setTimeout(()=>el.style.outline='none',600);
+}
+</script>
+</body></html>

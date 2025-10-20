@@ -1,0 +1,89 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CK44 Bangladesh — Creative & Gaming Planner Hub</title>
+<style>
+:root{--bg1:#081427;--bg2:#0d1731;--bg3:#1b1030;--text:#eaf2ff;--muted:#c0cfe2;--gold:#ffd700;--blue:#1e90ff;--purple:#7c3aed;--panel:#0b162a;--card:#0d1b33;--border:#1a2a44}
+*{box-sizing:border-box}body{margin:0;color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial;overflow:hidden;background:radial-gradient(1200px 700px at 20% -10%, rgba(30,144,255,.12), transparent),radial-gradient(1200px 700px at 90% 0%, rgba(255,215,0,.12), transparent),linear-gradient(135deg, var(--bg1), var(--bg2) 50%, var(--bg3));}
+.canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;filter:blur(12px)}
+.wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:16px;padding:18px}
+.controls{position:fixed;top:12px;right:12px;display:flex;gap:8px;z-index:5}.toggle{padding:10px 12px;border-radius:999px;border:1px solid var(--border);background:#0b172b;color:var(--text);cursor:pointer;box-shadow:0 10px 22px rgba(0,0,0,.35)}
+.logo{display:flex;align-items:center;gap:12px;margin-top:8px;filter:drop-shadow(0 6px 22px rgba(255,215,0,.35))}.logo img{height:56px;border-radius:10px;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
+.title{text-align:center;margin-top:4px}h1{margin:6px 0 4px;font-size:clamp(24px,4.2vw,40px);background:linear-gradient(90deg,#ffe89a,#ffd700,#9dd5ff,#c6a8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:14px}
+.grid{width:min(1200px,94vw);display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.card{position:relative;background:linear-gradient(180deg,rgba(13,27,51,.75),rgba(13,27,51,.9));border:1px solid var(--border);border-radius:18px;box-shadow:0 14px 36px rgba(0,0,0,.45);padding:18px;min-height:460px;overflow:hidden}
+.card::before{content:"";position:absolute;inset:-20%;background:radial-gradient(600px 220px at 30% 10%, rgba(124,58,237,.25), transparent 60%),radial-gradient(600px 220px at 80% 90%, rgba(30,144,255,.25), transparent 60%),radial-gradient(400px 180px at 20% 80%, rgba(255,215,0,.18), transparent 60%);filter:blur(10px)}
+.card h2{margin:0 0 8px;display:flex;align-items:center;gap:8px}.badge{display:inline-block;margin-top:6px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#0b172b;color:#dff1ff;font-size:12px;box-shadow:0 0 18px rgba(0,0,0,.25)}
+.card .open{position:absolute;left:16px;right:16px;bottom:16px;padding:12px;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg,#0e203a,#0a1628);color:#cfe7ff;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.4)}
+.card .open:hover{box-shadow:0 0 0 2px rgba(30,144,255,.18),0 0 0 8px rgba(255,215,0,.08)}
+.smallgrid{width:min(1200px,94vw);display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:10px}.small{min-height:210px}
+footer{position:fixed;left:0;right:0;bottom:6px;text-align:center;color:var(--muted);font-size:12px;z-index:2}
+.viewer{position:fixed;inset:0;background:rgba(4,8,16,.85);backdrop-filter:blur(6px);display:none;flex-direction:column;z-index:6}.viewer.show{display:flex;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}.viewer .bar{display:flex;align-items:center;gap:12px;padding:10px;border-bottom:1px solid var(--border)}.viewer .back{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:#0b172b;color:var(--text);cursor:pointer}.viewer .title{color:#dff1ff}.viewer iframe{flex:1;border:0}
+.modal{position:fixed;inset:0;background:rgba(4,8,16,.65);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:7}.modal.show{display:flex;animation:fadeIn .25s ease}
+.sheet{width:min(1200px,92vw);height:min(86vh,900px);background:linear-gradient(180deg,rgba(12,24,44,.95),rgba(10,20,38,.98));border:1px solid var(--border);border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.55);display:flex;flex-direction:column}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--border)}.sheet .label{color:#cfe7ff}.sheet .x{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:#0b172b;color:#fff;cursor:pointer}.sheet iframe{flex:1;border:0;border-radius:0 0 18px 18px}
+</style>
+</head>
+<body>
+<canvas id="cv" class="canvas"></canvas>
+<div class="controls"><button id="audioBtn" class="toggle">🔇 Music</button><button id="fsBtn" class="toggle">⛶ Fullscreen</button></div>
+
+<div class="wrap" id="hub">
+  <div class="logo"><img src="assets/hes.png" alt="CK44"/><div>
+    <h1>CK44 Bangladesh — Creative & Gaming Planner Hub</h1><div class="sub">Futuristic Aurora • Gold–Blue–Purple • Offline Ready • Music On/Off</div></div></div>
+
+  <div class="grid">
+    <div class="card"><h2>🎥 YouTube Planner</h2><div class="badge">Gold–Purple CK44</div><p class="sub">30 hari penuh: Sora prompts, descriptions, keywords, hashtags, jam upload.</p><button class="open" onclick="openPlanner('assets/planners/CK44_YouTube_30Day_Planner.html','YouTube Planner')">OPEN PLANNER</button></div>
+    <div class="card"><h2>📸 Instagram Planner</h2><div class="badge">CK44 Visual Suite</div><p class="sub">Reels • Story • Feed — caption Bangla+English, hashtag, jadwal & export.</p><button class="open" onclick="openPlanner('assets/planners/CK44_Instagram_30Day_Planner.html','Instagram Planner')">OPEN PLANNER</button></div>
+    <div class="card"><h2>🎬 TikTok Planner</h2><div class="badge">Gold–Blue CK44</div><p class="sub">30 hari video singkat — prompt, caption, hashtag, jam optimal.</p><button class="open" onclick="openPlanner('assets/planners/CK44_TikTok_30Day_Planner.html','TikTok Planner')">OPEN PLANNER</button></div>
+  </div>
+
+  <div class="smallgrid">
+    <div class="card small"><h2>📰 Medium (BN)</h2><p class="sub">Artikel organik, SEO CK44 বাংলাদেশ.</p><button class="open" onclick="openPlanner('assets/planners/CK44_Medium_Planner_1.html','Medium (BN)')">OPEN PLANNER</button></div>
+    <div class="card small"><h2>🐦 X / Twitter</h2><p class="sub">30 hari organic post (human tone).</p><button class="open" onclick="openPlanner('assets/planners/CK44_X_30Day_Planner.html','X / Twitter Planner')">OPEN PLANNER</button></div>
+    <div class="card small"><h2>🔗 Threads</h2><p class="sub">Lifestyle & komunitas santai.</p><button class="open" onclick="openPlanner('assets/planners/CK44_Threads_30Day_Planner.html','Threads Planner')">OPEN PLANNER</button></div>
+    <div class="card small"><h2>👔 LinkedIn</h2><p class="sub">Profesional & growth mindset.</p><button class="open" onclick="openPlanner('assets/planners/CK44_LinkedIn_30Day_Planner.html','LinkedIn Planner')">OPEN PLANNER</button></div>
+    <div class="card small"><h2>👾 Reddit</h2><p class="sub">Diskusi komunitas & tips.</p><button class="open" onclick="openPlanner('assets/planners/CK44_Reddit_30Day_Planner.html','Reddit Planner')">OPEN PLANNER</button></div>
+  </div>
+</div>
+
+<div class="viewer" id="viewer">
+  <div class="bar"><button class="back" onclick="viewer.classList.remove('show'); hub.classList.remove('hide')">⬅ Back to Hub</button><div class="title" id="title">Planner</div></div>
+  <iframe id="frame" src=""></iframe>
+</div>
+
+
+
+<footer>© 2025 Taka Alliance | CK44 Bangladesh — The Best Platform to Create and Win.</footer>
+<audio id="bgm" src="assets/bg_music.wav" loop autoplay muted></audio>
+<audio id="clk" src="assets/click.wav"></audio>
+
+<script>
+const audio = document.getElementById('bgm'); const audioBtn = document.getElementById('audioBtn'); audio.volume=.22;
+audioBtn.addEventListener('click', ()=>{audio.muted=!audio.muted; audioBtn.textContent = audio.muted ? "🔇 Music" : "🔊 Music"; if(!audio.muted) audio.play().catch(()=>{});});
+document.getElementById('fsBtn').addEventListener('click', ()=>{ const de=document.documentElement; if(!document.fullscreenElement) de.requestFullscreen && de.requestFullscreen(); else document.exitFullscreen && document.exitFullscreen(); });
+
+const hub = document.getElementById('hub'); const viewer = document.getElementById('viewer'); const frame = document.getElementById('frame'); const title = document.getElementById('title'); const modal = document.getElementById('modal'); const modalFrame = document.getElementById('modalFrame'); const clk = document.getElementById('clk');
+
+    function openPlanner(src, label){
+      if('fullscreen'==='fullscreen'){
+        hub.classList.add('hide');
+        viewer.classList.add('show');
+        frame.src = src;
+        title.innerText = label;
+      } else {
+        modalFrame.src = src;
+        modal.classList.add('show');
+      }
+      clk.currentTime=0; clk.play().catch(()=>{});
+    }
+    
+
+// Aurora particles
+const cv = document.getElementById('cv'); const ctx = cv.getContext('2d'); let w,h; function resize(){w=cv.width=innerWidth;h=cv.height=innerHeight;} resize(); addEventListener('resize',resize);
+const parts = Array.from({length:60},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+1,dx:(Math.random()-.5)*0.4,dy:(Math.random()-.5)*0.4,h:200+Math.random()*120}));
+(function loop(){ctx.clearRect(0,0,w,h); parts.forEach(p=>{p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>w)p.dx*=-1; if(p.y<0||p.y>h)p.dy*=-1; const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*18); g.addColorStop(0,`hsla(${p.h}, 90%, 60%, .22)`); g.addColorStop(1,'transparent'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*18,0,Math.PI*2); ctx.fill(); }); requestAnimationFrame(loop);})();
+</script>
+</body></html>
